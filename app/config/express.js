@@ -25,7 +25,7 @@ module.exports = function(app) {
   }
 
   app.set('views', appRoot + '/app/views');
-  app.set('view engine', 'jade');
+  app.set('view engine', 'pug');
   app.set('trust proxy', 'loopback');
 
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
