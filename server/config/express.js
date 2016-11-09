@@ -13,7 +13,7 @@ var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var helmet = require('helmet');
 var appRoot = require('app-root-path');
-var logger = require(appRoot + '/app/utils/logger');
+var logger = require(appRoot + '/server/utils/logger');
 var util = require('util');
 
 module.exports = function(app) {
@@ -24,7 +24,7 @@ module.exports = function(app) {
     app.locals.pretty = true;
   }
 
-  app.set('views', appRoot + '/app/views');
+  app.set('views', appRoot + '/server/views');
   app.set('view engine', 'pug');
   app.set('trust proxy', 'loopback');
 
@@ -37,7 +37,7 @@ module.exports = function(app) {
   app.use(expressValidator());
   app.use(cookieParser());
   app.use(compress());
-  app.use(express.static(appRoot + '/app/public'));
+  app.use(express.static(appRoot + '/client/public'));
 
   app.use(helmet());
   app.use(methodOverride());
@@ -70,7 +70,7 @@ module.exports = function(app) {
     }));
   */
 
-  app.use(require(appRoot + '/app/controllers'));
+  app.use(require(appRoot + '/server/controllers'));
 
   app.use(function (req, res, next) {
     var err = new Error('Not Found');
