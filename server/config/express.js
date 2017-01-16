@@ -13,7 +13,7 @@ var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var helmet = require('helmet');
 var appRoot = require('app-root-path');
-var logger = require(appRoot + '/server/utils/logger');
+var logger = require(appRoot + '/server/config/logger');
 var util = require('util');
 
 module.exports = function(app) {
