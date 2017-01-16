@@ -3,17 +3,18 @@ var webpack = require('webpack');
 var WebpackNotifierPlugin = require('webpack-notifier');
 
 var PATHS = {
-  src: path.join(__dirname, 'src/js/'),
-  build: path.join(__dirname, 'app/public/build/')
+  src: path.join(__dirname, 'client/src/js/'),
+  build: path.join(__dirname, 'client/public/build/')
 };
 
 module.exports = {
   entry: {
-
+    app: path.join(PATHS.src, 'app.js')
   },
   output: {
     path: PATHS.build,
-    filename: '[name].js'
+    filename: '[name].js',
+    publicPath: 'build/'
   },
   module: {
     loaders: [
@@ -28,6 +29,14 @@ module.exports = {
       {
         test: /\.(jpg|png)$/,
         loader: 'url-loader'
+      },
+      {
+        test: /\.scss$/,
+        loaders: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.css/,
