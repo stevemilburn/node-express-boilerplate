@@ -16,6 +16,9 @@ module.exports = {
     filename: '[name].js',
     publicPath: 'build/'
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   module: {
     loaders: [
       {
