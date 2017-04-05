@@ -1,5 +1,5 @@
-var Promise = require('bluebird');
-var mysql = require('mysql');
+const Promise = require('bluebird');
+const mysql = require('mysql');
 
 Promise.promisifyAll(require("mysql/lib/Connection").prototype);
 Promise.promisifyAll(require("mysql/lib/Pool").prototype);
